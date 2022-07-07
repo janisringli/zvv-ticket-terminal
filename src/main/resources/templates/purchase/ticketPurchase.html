@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Purchase</title>
+</head>
+<body>
+    <h1>Ticket Purchase</h1>
+    <h2 th:text="'Guten Tag ' +${customer.prename}"></h2>
+    <form action="#" th:action="@{/purchase}" method="post">
+        <div th:each="radioValue: ${listOfOptions}">
+            <label>
+                <input type="radio" name="ticket" th:text='${radioValue}' />
+            </label>
+        </div>
+        <input type="submit" value="Purchase" />
+    </form>
+
+</body>
+</html>
