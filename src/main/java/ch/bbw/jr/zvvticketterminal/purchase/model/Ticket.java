@@ -1,9 +1,12 @@
 package ch.bbw.jr.zvvticketterminal.purchase.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,6 +24,32 @@ public class Ticket {
             "Stempelkarte"
             ));
     private String ticketType;
+    private Boolean halbtax;
+    private List<String>allKlasses = new ArrayList<>(Arrays.asList(
+            "1. Klasse",
+            "2. Klasse"
+    ));
+    private String klass;
+    public String getKlass() {
+        return klass;
+    }
+    public void setKlass(String klass) {
+        this.klass = klass;
+    }
+    public List<String> getAllKlasses() {
+        return allKlasses;
+    }
+    public void setAllTickets(List<String> allTickets) {
+        this.allTickets = allTickets;
+    }
+
+    public Boolean isHalbtax() {
+        return halbtax;
+    }
+    public void setHalbtax(Boolean halbtax) {
+        this.halbtax = halbtax;
+    }
+
     private double price;
     private String ticketNumber;
 

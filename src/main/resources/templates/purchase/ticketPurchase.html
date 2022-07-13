@@ -3,17 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Ticket Purchase</title>
+    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet">
 </head>
 <body>
     <h1>Ticket Purchase</h1>
-    <h2 th:text="'Guten Tag ' +${customer.prename}"></h2>
-    <form action="#" th:action="@{/purchase}" method="post">
-        <div th:each="radioValue: ${listOfOptions}">
-            <label>
-                <input type="radio" name="ticket" th:text='${radioValue}' />
-            </label>
-        </div>
-        <input type="submit" value="Purchase" />
+    <form action="#" th:action="@{/purchase}" th:object="${ticket}" method="post">
+        <label>
+            <select th:field="*{ticketType}">
+                <option th:each="options: ${listOfOptions}"  name="ticket" th:value="${options}" th:text='${options}' />
+            </select>
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" name="halbtax" th:checked="${halbtax}" >Halbtax
+        </label>
+        <br>
+        <label>
+            <div th:each="klassOption: ${listOfKlasses}">
+                <input type="radio" name="klass"  th:value="${klassOption}">
+                <label th:text="${klassOption}"></label>
+            </div>
+        </label>
+        <br>
+        <input type="submit" value="Purchase"/>
     </form>
 
 </body>

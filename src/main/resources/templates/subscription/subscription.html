@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buy a subscription</title>
+    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body>
+    <h1>Buy a subscription</h1>
+    <form action="#" th:action="@{/subscription}" th:object="${customer}" method="post">
+        <label>
+            <span class="mandatory">*</span> First Name:
+            <br>
+            <input th:field="*{firstName}" type="text">
+        </label>
+        <br>
+        <label>
+            <span  class="mandatory">*</span> Sir Name:
+            <br>
+            <input th:field="*{lastName}" type="text">
+        </label>
+        <br>
+        <label>
+            <span  class="mandatory">*</span> Email:
+            <br>
+            <input th:field="*{email}" type="email">
+        </label>
+        <br>
+        <label>
+            <select th:field="*{subscriptionType}">
+                <option th:each="options: ${listOfSubscriptions}" th:value="${options}" th:text='${options}'></option>
+            </select>
+        </label>
+        <button type="submit" name="submit" class="btn">Buy Subscription</button>
+    </form>
+</body>
+</html>
